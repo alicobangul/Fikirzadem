@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "804185024726",
+    "project_id": "fikirzadem",
+    "storage_bucket": "fikirzadem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804185024726:android:f9b8ab78ad7be5ca13c177",
+        "android_client_info": {
+          "package_name": "com.basesoftware.fikirzadem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "804185024726-a0io3n4aigs707tljoii4b0nibbdusn2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDksAsVxMKBe9ty6nJO0y_q3abHA9kVuvs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "804185024726-a0io3n4aigs707tljoii4b0nibbdusn2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

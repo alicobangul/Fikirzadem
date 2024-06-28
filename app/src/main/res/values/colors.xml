@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <color name="purple_200" tools:ignore="UnusedResources">#FFBB86FC</color>
+    <color name="purple_500" tools:ignore="UnusedResources">#FF6200EE</color>
+    <color name="purple_700" tools:ignore="UnusedResources">#FF3700B3</color>
+    <color name="teal_200" tools:ignore="UnusedResources">#FF03DAC5</color>
+    <color name="teal_700" tools:ignore="UnusedResources">#FF018786</color>
+    <color name="black" tools:ignore="UnusedResources">#FF000000</color>
+    <color name="white" tools:ignore="UnusedResources">#FFFFFFFF</color>
+    <color name="addPostTextField" tools:ignore="UnusedResources">#7DD2F0</color>
+    <color name="theme">#272E32</color>
+    <color name="snackbar">#15171A</color>
+    <color name="txtBoxColor">#3F4549</color>
+
+    <color name="lite">#272E32</color>
+
+    <color name="category_shop">#FF0000</color>
+    <color name="category_car">#4DA6FF</color>
+    <color name="category_astrology">#D9D900</color>
+    <color name="category_momandbaby">#FF73FF</color>
+    <color name="category_education">#99CCFF</color>
+    <color name="category_philosophy">#FFFF00</color>
+    <color name="category_finance">#00661A</color>
+    <color name="category_nature">#96FF73</color>
+    <color name="category_general">#FFD24D</color>
+    <color name="category_animals">#00B200</color>
+    <color name="category_hobby">#A300D9</color>
+    <color name="category_development">#00FFFF</color>
+    <color name="category_fashion">#00B2B2</color>
+    <color name="category_psychology">#B973FF</color>
+    <color name="category_healt">#D9A300</color>
+    <color name="category_sport">#73FF73</color>
+    <color name="category_technology">#000000</color>
+    <color name="category_transport">#868695</color>
+    <color name="category_food">#8C2300</color>
+
+
+    <array name="arrayCategoryColor">
+        <item>@color/category_shop</item>
+        <item>@color/category_car</item>
+        <item>@color/category_astrology</item>
+        <item>@color/category_momandbaby</item>
+        <item>@color/category_education</item>
+        <item>@color/category_philosophy</item>
+        <item>@color/category_finance</item>
+        <item>@color/category_nature</item>
+        <item>@color/category_general</item>
+        <item>@color/category_animals</item>
+        <item>@color/category_hobby</item>
+        <item>@color/category_development</item>
+        <item>@color/category_fashion</item>
+        <item>@color/category_psychology</item>
+        <item>@color/category_healt</item>
+        <item>@color/category_sport</item>
+        <item>@color/category_technology</item>
+        <item>@color/category_transport</item>
+        <item>@color/category_food</item>
+    </array>
+
+</resources>

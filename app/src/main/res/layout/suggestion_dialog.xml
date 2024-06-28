@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data><variable name="commentSuggestion" type="Boolean" /></data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:soundEffectsEnabled="false">
+
+        <LinearLayout
+            android:id="@+id/linearSuggestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_like_question"
+            android:orientation="vertical"
+            android:soundEffectsEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txtSuggestionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="10dp"
+                android:soundEffectsEnabled="false"
+                android:text="@string/hi"
+                android:textAlignment="center"
+                android:textColor="#CCCCCC"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtSuggestionText"
+                android:layout_width="215dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:soundEffectsEnabled="false"
+                android:text="@{commentSuggestion == true ? @string/like_app_text : @string/share_app_text}"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="#8899A6" />
+
+            <RatingBar
+                android:id="@+id/ratingSuggestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:max="5"
+                android:progressDrawable="@drawable/shape_like_question_rating"
+                android:rating="5"
+                android:soundEffectsEnabled="false"
+                android:stepSize="1"
+                android:ratingSettings="@{true}"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:soundEffectsEnabled="false">
+
+                <View
+                    android:id="@+id/viewSuggestionWhite"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="#8899A6"
+                    android:soundEffectsEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:soundEffectsEnabled="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewSuggestionWhite">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSuggestionYes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:gravity="center|center_vertical"
+                        android:soundEffectsEnabled="false"
+                        android:text="@string/sure"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white" />
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="#8899A6"
+                        android:soundEffectsEnabled="false" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSuggestionLater"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:gravity="center|center_vertical"
+                        android:soundEffectsEnabled="false"
+                        android:text="@string/later"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:soundEffectsEnabled="false"
+            app:layout_constraintBottom_toTopOf="@+id/linearSuggestion"
+            app:layout_constraintEnd_toEndOf="@+id/linearSuggestion"
+            app:layout_constraintStart_toStartOf="@+id/linearSuggestion"
+            app:layout_constraintTop_toTopOf="@+id/linearSuggestion"
+            android:contentDescription="Icon"
+            android:background="@{commentSuggestion == true ? @drawable/like_question_ico : @drawable/share_question_ico}"
+            tools:ignore="HardcodedText" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

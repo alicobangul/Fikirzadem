@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="userFollowing">Following</string>
+    <string name="userFollower">Followers</string>
+
+    <string name="email">E-Mail</string>
+    <string name="password">Password</string>
+
+    <string name="okey">OKEY</string>
+    <string name="cancel">Cancel</string>
+    <string name="stop">Stop</string>
+
+    <string name="send">Send</string>
+    <string name="check">Check</string>
+
+    <string name="change">Change</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="remove">Remove</string>
+    <string name="clear">Clear</string>
+
+    <string name="select">Select</string>
+    <string name="scroll">Scroll</string>
+    <string name="post">Content</string>
+    <string name="error">Error</string>
+    <string name="yes">Yes</string>
+
+    <string name="verification">Verification</string>
+
+    <string name="storage">Storage</string>
+
+    <string name="listen">Listen</string>
+    <string name="refresh">Refresh</string>
+    <string name="share">Share</string>
+    <string name="report">Report</string>
+    <string name="caution">Caution</string>
+    <string name="exit">Exit</string>
+    <string name="rating">Rating</string>
+
+    <string name="hi">Hi</string>
+    <string name="sure">Sure</string>
+    <string name="later">Later</string>
+
+    <string name="graphics">Graphics</string>
+    <string name="general">General</string>
+    <string name="animation">Animation</string>
+
+</resources>

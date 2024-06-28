@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/postPublic"
+        android:icon="@drawable/newpost_likemode_spinner_ico_open"
+        android:title="@string/likemode_on" />
+    <item
+        android:id="@+id/postCustom"
+        android:icon="@drawable/newpost_likemode_spinner_ico_close"
+        android:title="@string/likemode_off" />
+
+</menu>

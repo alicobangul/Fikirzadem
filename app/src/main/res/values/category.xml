@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="category_shop">Shop</string>
+    <string name="category_car">Car</string>
+    <string name="category_astrology">Astrology</string>
+    <string name="category_momandbaby">Mom And Baby</string>
+    <string name="category_education">Education</string>
+    <string name="category_philosophy">Philosophy</string>
+    <string name="category_finance">Finance</string>
+    <string name="category_nature">Nature</string>
+    <string name="category_general">General</string>
+    <string name="category_animals">Animals</string>
+    <string name="category_hobby">Hobby</string>
+    <string name="category_development">Development</string>
+    <string name="category_fashion">Fashion</string>
+    <string name="category_psychology">Psychology</string>
+    <string name="category_healt">Healt</string>
+    <string name="category_sport">Sport</string>
+    <string name="category_technology">Technology</string>
+    <string name="category_transport">Transport</string>
+    <string name="category_food">Food</string>
+
+    <string-array name="arrayCategoryText">
+        <item>@string/category_shop</item>
+        <item>@string/category_car</item>
+        <item>@string/category_astrology</item>
+        <item>@string/category_momandbaby</item>
+        <item>@string/category_education</item>
+        <item>@string/category_philosophy</item>
+        <item>@string/category_finance</item>
+        <item>@string/category_nature</item>
+        <item>@string/category_general</item>
+        <item>@string/category_animals</item>
+        <item>@string/category_hobby</item>
+        <item>@string/category_development</item>
+        <item>@string/category_fashion</item>
+        <item>@string/category_psychology</item>
+        <item>@string/category_healt</item>
+        <item>@string/category_sport</item>
+        <item>@string/category_technology</item>
+        <item>@string/category_transport</item>
+        <item>@string/category_food</item>
+    </string-array>
+
+    <string-array name="arrayCategoryTextEn">
+        <item>@string/category_animals</item>
+        <item>@string/category_astrology</item>
+        <item>@string/category_car</item>
+        <item>@string/category_development</item>
+        <item>@string/category_education</item>
+        <item>@string/category_fashion</item>
+        <item>@string/category_finance</item>
+        <item>@string/category_food</item>
+        <item>@string/category_general</item>
+        <item>@string/category_healt</item>
+        <item>@string/category_hobby</item>
+        <item>@string/category_momandbaby</item>
+        <item>@string/category_nature</item>
+        <item>@string/category_philosophy</item>
+        <item>@string/category_psychology</item>
+        <item>@string/category_shop</item>
+        <item>@string/category_sport</item>
+        <item>@string/category_technology</item>
+        <item>@string/category_transport</item>
+    </string-array>
+
+
+</resources>

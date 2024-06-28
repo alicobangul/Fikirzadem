@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="notification_facebook_add">Added Facebook profile</string>
+    <string name="notification_facebook_delete">Facebook profile has been removed</string>
+
+    <string name="notification_twitter_add">Added Twitter profile</string>
+    <string name="notification_twitter_delete">Twitter profile has been removed</string>
+
+    <string name="notification_instagram_add">Added Instagram profile</string>
+    <string name="notification_instagram_delete">Instagram profile has been removed</string>
+
+    <string name="notification_edit_mail">Email has been changed</string>
+    <string name="notification_edit_password">Password has been changed</string>
+
+    <string name="notification_edit_realname">Name has been changed</string>
+    <string name="notification_edit_username">Username has been changed</string>
+    <string name="notification_picture_change">Profile picture has been changed</string>
+    <string name="notification_edit_biography">Biography has been changed</string>
+
+    <string name="notification_verify_add">Your account has been approved</string>
+    <string name="notification_verify_delete">Your account has been unconfir</string>
+
+    <string name="notification_new_admin_message">New admin message received</string>
+
+    <string name="notification_new_follower">You have gained a new follower :</string>
+
+    <string name="notification_new_report">New report received</string>
+
+    <string name="notification_new_post_block">Content sharing is banned</string>
+
+    <string name="notification_new_comment_block">Posting comments is banned</string>
+
+    <string name="notification_new_report_block">Sending reports is banned</string>
+
+    <string name="notification_new_contact_block">Admin communication is banned</string>
+
+    <string name="notification_edit_block">Profile editing is banned</string>
+
+
+</resources>

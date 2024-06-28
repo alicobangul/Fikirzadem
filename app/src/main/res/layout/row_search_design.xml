@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="android.R.string" />
+        <variable name="dataFromServer" type="Boolean" />
+        <variable name="deletedUser" type="Boolean" />
+        <variable name="user" type="com.basesoftware.fikirzadem.model.recycler.SearchRecyclerModel" />
+        <variable name="shared" type="com.basesoftware.fikirzadem.presentation.viewmodel.SharedViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/shape_box"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,UnusedAttribute">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgSearchProfilePicture"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="12dp"
+            android:download="@{user.userProfilePicture}"
+            android:visibility="@{deletedUser == true ? View.INVISIBLE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.538" />
+
+        <ImageView
+            android:id="@+id/imgSearchProfileVerify"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/user_verify"
+            android:foreground="@drawable/user_verify"
+            android:src="@drawable/user_verify"
+            android:visibility="@{deletedUser == true || user.userEmailConfirm == false ? View.INVISIBLE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="@+id/imgSearchProfilePicture"
+            app:layout_constraintHorizontal_bias="1.13"
+            app:layout_constraintStart_toStartOf="@+id/imgSearchProfilePicture"
+            app:layout_constraintTop_toTopOf="@+id/imgSearchProfilePicture"
+            app:srcCompat="@drawable/user_verify"
+            tools:srcCompat="@drawable/user_verify" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgSearchProfilePicture"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/txtSearchUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{user.userName}"
+                    android:visibility="@{deletedUser == true ? View.INVISIBLE : View.VISIBLE}"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtSearchRealName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{user.userRealName}"
+                    android:visibility="@{deletedUser == true ? View.INVISIBLE : View.VISIBLE}"
+                    android:textColor="#8899A6" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSearchProfile"
+                style="@style/SocialButton"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center|center_horizontal"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/shape_user_sheet_button"
+                android:text="@string/profile"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:visibility="@{deletedUser || !user.sourceServer || user.userId.equals(shared.myUserId) ? View.INVISIBLE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bottom_sheet_ico_delete"
+            android:foreground="@drawable/bottom_sheet_ico_delete"
+            android:src="@drawable/bottom_sheet_ico_delete"
+            android:visibility="@{deletedUser == true ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bottom_sheet_ico_delete"
+            tools:srcCompat="@drawable/bottom_sheet_ico_delete" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

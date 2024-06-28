@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:keep="@menu/left_nav_menu">
+
+
+
+    <item android:title="@string/navigation">
+        <menu>
+            <item
+                android:id="@+id/feedFragment"
+                android:icon="@drawable/navleft_ico_feed"
+                android:title="@string/feed" />
+            <item
+                android:id="@+id/searchFragment"
+                android:icon="@drawable/navleft_ico_search"
+                android:title="@string/search" />
+            <item
+                android:id="@+id/newPostFragment"
+                android:icon="@drawable/navleft_ico_newpost"
+                android:title="@string/newpost"/>
+            <item
+                android:id="@+id/notificationFragment"
+                android:icon="@drawable/navleft_ico_notification"
+                android:title="@string/notification" />
+            <item
+                android:id="@+id/profileFragment"
+                android:icon="@drawable/navleft_ico_profile"
+                android:title="@string/profile" />
+
+            <item
+                android:id="@+id/favoriteFragment"
+                android:icon="@drawable/navleft_ico_favorite"
+                android:title="@string/savedpost" />
+            <item
+                android:id="@+id/interestFragment"
+                android:icon="@drawable/navleft_ico_interest"
+                android:title="@string/my_interests" />
+
+        </menu>
+    </item>
+    <item android:title="@string/settings">
+        <menu>
+            <item
+                android:id="@+id/editProfileFragment"
+                android:icon="@drawable/navleft_ico_settings_profile"
+                android:title="@string/edit_profile" />
+            <item
+                android:id="@+id/settingsFragment"
+                android:icon="@drawable/navleft_ico_settings"
+                android:title="@string/app_settings" />
+        </menu>
+    </item>
+    <item android:title="@string/community">
+        <menu>
+            <item
+                android:id="@+id/navigationComment"
+                android:icon="@drawable/navleft_ico_comment"
+                android:title="@string/comment" />
+            <item
+                android:id="@+id/navigationInvitation"
+                android:icon="@drawable/navleft_ico_invitation"
+                android:title="@string/invitation" />
+            <item
+                android:id="@+id/contactUsFragment"
+                android:icon="@drawable/navleft_ico_contact_us"
+                android:title="@string/contact_us" />
+            <item
+                android:id="@+id/navigationVisit"
+                android:icon="@drawable/navleft_ico_visit"
+                android:title="@string/visit" />
+            <item
+                android:id="@+id/navigationMoreApp"
+                android:icon="@drawable/navleft_ico_moreapp"
+                android:title="@string/more_app" />
+        </menu>
+    </item>
+    <item android:title="@string/connection">
+        <menu>
+            <item
+                android:id="@+id/navigationLogOut"
+                android:icon="@drawable/navleft_ico_logout"
+                android:title="@string/connection_logout" />
+        </menu>
+    </item>
+</menu>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:keep="@drawable/shape_feed_postbox">
+    <item>
+        <shape>
+            <corners android:radius="25dp" />
+            <stroke android:width="5dp" android:color="#1F2326" />
+            <gradient android:startColor="#272E32" android:endColor="#272E32" />
+        </shape>
+    </item>
+</layer-list>

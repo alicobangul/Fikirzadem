@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="time_year">y</string>
+    <string name="time_month">m</string>
+    <string name="time_week">w</string>
+    <string name="time_day">d</string>
+    <string name="time_yesterday">yesterday</string>
+    <string name="time_hour">h</string>
+    <string name="time_minute">min</string>
+    <string name="time_second">sec</string>
+    <string name="time_now">now</string>
+
+</resources>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="android.R.string" />
+        <variable name="deletedUser" type="Boolean" />
+        <variable name="user" type="com.basesoftware.fikirzadem.model.UserModel" />
+        <variable name="like" type="com.basesoftware.fikirzadem.model.LikeDislikeModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLikeBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/shape_box"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,UnusedAttribute">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgLikeProfilePicture"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="11dp"
+            android:download="@{user.userProfilePicture}"
+            android:visibility="@{deletedUser == true ? View.INVISIBLE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.538" />
+
+        <ImageView
+            android:id="@+id/imgLikeProfileVerify"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/user_verify"
+            android:foreground="@drawable/user_verify"
+            android:src="@drawable/user_verify"
+            android:visibility="@{deletedUser == true || user.userEmailConfirm == false ? View.INVISIBLE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="@+id/imgLikeProfilePicture"
+            app:layout_constraintHorizontal_bias="1.13"
+            app:layout_constraintStart_toStartOf="@+id/imgLikeProfilePicture"
+            app:layout_constraintTop_toTopOf="@+id/imgLikeProfilePicture"
+            app:srcCompat="@drawable/user_verify"
+            tools:srcCompat="@drawable/user_verify" />
+
+        <RatingBar
+            android:id="@+id/ratingLike"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:max="5"
+            android:postRating="@{like.postRating}"
+            android:progressDrawable="@drawable/shape_post_like_rating"
+            android:visibility="@{deletedUser == true ? View.INVISIBLE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgPostComment"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:background="@drawable/post_comment"
+            android:visibility="@{deletedUser == false &amp;&amp; like.postCommentExist == true ? View.VISIBLE : View.INVISIBLE}"
+            android:postCommentIcoCalculate="@{like.postRating}"
+            app:layout_constraintEnd_toEndOf="@+id/ratingLike"
+            app:layout_constraintHorizontal_bias="0.511"
+            app:layout_constraintStart_toStartOf="@+id/ratingLike"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLikeUserInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ratingLike"
+            app:layout_constraintStart_toEndOf="@+id/imgLikeProfileVerify"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txtLikeUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:marqueeSettings="@{user.userName}"
+                android:menuFilter="@{true}"
+                android:singleLine="true"
+                android:soundEffectsEnabled="false"
+                android:text="@{user.userName}"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:visibility="@{deletedUser == true ? View.INVISIBLE : View.VISIBLE}" />
+
+            <TextView
+                android:id="@+id/txtLikeTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:calculateDate="@{like.actionDate.seconds}"
+                android:singleLine="true"
+                android:textColor="#8899A6"
+                android:visibility="@{deletedUser == true ? View.INVISIBLE : View.VISIBLE}" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgLikeUserDeleted"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bottom_sheet_ico_delete"
+            android:foreground="@drawable/bottom_sheet_ico_delete"
+            android:src="@drawable/bottom_sheet_ico_delete"
+            android:visibility="@{deletedUser == true ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bottom_sheet_ico_delete"
+            tools:srcCompat="@drawable/bottom_sheet_ico_delete" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ######################################## CATEGORY XML ######################################## -->
+
+    <string name="category_shop">Alışveriş</string>
+    <string name="category_car">Araba</string>
+    <string name="category_astrology">Astroloji</string>
+    <string name="category_momandbaby">Anne Çocuk</string>
+    <string name="category_education">Eğitim</string>
+    <string name="category_philosophy">Felsefe</string>
+    <string name="category_finance">Finans</string>
+    <string name="category_nature">Doğa</string>
+    <string name="category_general">Genel</string>
+    <string name="category_animals">Hayvanlar</string>
+    <string name="category_hobby">Hobi</string>
+    <string name="category_development">Kişisel Gelişim</string>
+    <string name="category_fashion">Moda</string>
+    <string name="category_psychology">Psikoloji</string>
+    <string name="category_healt">Sağlık</string>
+    <string name="category_sport">Spor</string>
+    <string name="category_technology">Teknoloji</string>
+    <string name="category_transport">Ulaşım</string>
+    <string name="category_food">Yemek</string>
+
+    <!-- ######################################## CATEGORY XML ######################################## -->
+
+
+
+
+
+    <!-- ######################################## INFORMATION XML ######################################## -->
+
+    <!-- USER [INFO] -->
+
+    <string name="banned">Sistemden uzaklaştırıldınız</string>
+    <string name="create_new_user">Lütfen yeni hesap oluşturun</string>
+
+
+    <!-- CHANGE [INFO] -->
+
+    <string name="save_changed">Değişiklik kaydedildi</string>
+    <string name="send_data_update_fail">Değişiklik yok</string>
+
+
+    <!-- COMMENT [INFO] -->
+
+    <string name="comment_delete_refresh">Lütfen yorumu yenileyin</string>
+    <string name="comment_delete">Yorumu silmek istiyor musun?</string>
+    <string name="comment_delete_success">Yorum silindi</string>
+    <string name="comment_delete_fail">Yorum silme başarısız</string>
+    <string name="comment_not_exist">Yorum bulunamadı</string>
+    <string name="comment_update_success">Yorum yenilendi</string>
+    <string name="comment_update_fail">Yorum yenileme başarısız</string>
+
+
+    <!-- ACCOUNT [INFO] -->
+
+    <string name="delete_account_text">Hesabı silmek istiyor musun?</string>
+    <string name="delete_account_fail">Hesap silinemedi</string>
+
+
+    <!-- PROFILE [INFO] -->
+
+    <string name="profile_update_success">Profil güncellendi</string>
+    <string name="profile_update_fail">Profil güncellenemedi</string>
+    <string name="user_edit_banned">Profil düzenleme yasaklandı</string>
+
+    <string name="profile_error">Profil hatası</string>
+    <string name="profile_created">Profil oluşturuldu</string>
+    <string name="profile_creating">Profil oluşturuluyor</string>
+    <string name="register_fail">Kayıt başarısız</string>
+
+
+    <!-- E-MAIL [INFO] -->
+
+    <string name="email_error">E-mail hatası</string>
+    <string name="new_mail_fail">Mail değiştirme başarısız</string>
+    <string name="new_mail_ok">Mail değiştirildi</string>
+    <string name="new_mail_change_fail">Mail aynı</string>
+    <string name="register_banneduser_exists">Bu mail yasaklandı</string>
+    <string name="email_confirm">Lütfen mail adresinizi onaylayın</string>
+    <string name="check_mailbox">Mail kutunuzu kontrol edin</string>
+
+
+    <!-- PASSWORD [INFO] -->
+
+    <string name="new_pass_change_fail">Şifre aynı</string>
+    <string name="new_pass_fail">Şifre değiştirme başarısız</string>
+    <string name="new_pass_ok">Şifre değiştirildi</string>
+    <string name="password_error">Şifre minimum 6 karakter</string>
+    <string name="wrong_password">Şifre yanlış</string>
+
+
+    <!-- ERROR [INFO] -->
+
+    <string name="check_internet_connection">İnternet bağlantınızı kontrol edin</string>
+    <string name="check_mailbox_error">Bağlantı gönderilemedi</string>
+    <string name="user_name_available">Bu kullanıcı adı kullanılıyor</string>
+    <string name="info_empty">Eksik bilgi</string>
+    <string name="unknown_error">Bilinmeyen hata</string>
+
+
+    <!-- PERMISSION & GALLERY [INFO] -->
+
+    <string name="permission_gallery">Galeriye gitmek için izin gerekli</string>
+    <string name="give_permission">İzin ver</string>
+    <string name="permission_fail">İzin verilmedi</string>
+    <string name="unselected">Resim seçilmedi</string>
+
+
+    <!-- LOGIN [INFO] -->
+
+    <string name="login_success">Giriş yapıldı</string>
+    <string name="login_fail">Giriş yapılamadı</string>
+    <string name="login_account">Giriş yapabilirsiniz</string>
+    <string name="user_notfound">Kullanıcı bulunamadı</string>
+
+
+    <!-- ADMIN MESSAGE [INFO] -->
+
+    <string name="msg_complete">Mesaj iletildi</string>
+    <string name="msg_error">Mesaj iletilemedi</string>
+    <string name="msg_error_new">Lütfen yarın tekrar deneyin</string>
+
+
+    <!-- REPORT MESSAGE [INFO] -->
+
+    <string name="report_available">Daha önce raporlandı</string>
+    <string name="report_send_success">Rapor gönderildi</string>
+    <string name="report_send_fail">Rapor gönderilemedi</string>
+
+
+    <!-- POST [INFO] -->
+
+    <string name="favorite_post_delete_in_room">Favori postları sil ?</string>
+    <string name="favorite_post_delete_success">Favori postlar silindi</string>
+
+    <string name="addpost_complete">Gönderi paylaşıldı</string>
+    <string name="addpost_error">Gönderi paylaşılamadı</string>
+    <string name="addpost_block">Gönderi paylaşmanız yasaklandı</string>
+
+    <string name="like_fail_my_post">İçerik sahibi görüş belirtemez</string>
+    <string name="likedislike_available">Daha önce görüş belirtildi</string>
+    <string name="likedislike_success">Görüş bildirildi</string>
+    <string name="likedislike_fail">Görüş gönderilemedi</string>
+
+    <string name="post_refresh_for_report">İçeriği yenilediniz mi ?</string>
+    <string name="post_delete_question">İçeriği silmek istiyor musun ?</string>
+    <string name="post_save_in_favorite_room">İçerik kaydedildi</string>
+    <string name="post_delete_in_firebase_fail">İçerik silme başarısız</string>
+    <string name="post_delete_in_favorite_success">İçerik favorilerden silindi</string>
+    <string name="post_delete_in_favorite_fail">İçerik favorilerden silinemedi</string>
+    <string name="post_profile_feed_download_fail">İçeriklere erişilemedi</string>
+
+    <string name="post_refresh_success">İçerik yenilendi</string>
+    <string name="post_refresh_fail">İçerik yenileme başarısız</string>
+    <string name="post_not_found">İçerik bulunamadı</string>
+    <string name="post_fail">İçerik yüklenemedi</string>
+
+    <string name="post_not_exists">İçerik yok</string>
+    <string name="old_post_fail">Başka içerik yok</string>
+    <string name="new_post_fail">Yeni içerik yok</string>
+    <string name="minchar_limit">Eksik içerik, minimum 30 karakter</string>
+    <string name="spam_error">Spam hatası, içeriği kontrol edin</string>
+
+
+    <!-- SOCIAL & USER [INFO] -->
+
+    <string name="user_unfollow_success">Takipten çıkarıldı</string>
+    <string name="user_unfollow_fail">Takipten çıkarma başarısız</string>
+    <string name="user_last_follow">Kullanıcı kısa süre önce takip edildi</string>
+    <string name="user_follow_success">Kullanıcı takip ediliyor</string>
+    <string name="user_follow_fail">Kullanıcı takip edilemedi</string>
+
+    <string name="user_fail">Kullanıcılar yüklenemedi</string>
+    <string name="user_not_exists">Kullanıcı yok</string>
+    <string name="more_user_fail">Başka kullanıcı yok</string>
+    <string name="user_deleted">Kullanıcı silinmiş</string>
+    <string name="user_available">Kullanıcı mevcut</string>
+
+    <string name="user_or_post_deleted">Kullanıcı veya içerik silinmiş</string>
+
+    <string name="msg_error_tryagain">Lütfen tekrar deneyin</string>
+
+    <!-- ######################################## INFORMATION XML ######################################## -->
+
+
+
+
+
+    <!-- ######################################## NOTIFICATION XML ######################################## -->
+
+    <string name="notification_facebook_add">Facebook profili eklendi</string>
+    <string name="notification_facebook_delete">Facebook profili kaldırıldı</string>
+
+    <string name="notification_twitter_add">Twitter profili eklendi</string>
+    <string name="notification_twitter_delete">Twitter profili kaldırıldı</string>
+
+    <string name="notification_instagram_add">Instagram profili eklendi</string>
+    <string name="notification_instagram_delete">Instagram profili kaldırıldı</string>
+
+    <string name="notification_edit_mail">Mail değiştirildi</string>
+    <string name="notification_edit_password">Şifre değiştirildi</string>
+
+    <string name="notification_edit_realname">İsim değiştirildi</string>
+    <string name="notification_edit_username">Kullanıcıadı değiştirildi</string>
+    <string name="notification_picture_change">Profil resmi değiştirildi</string>
+    <string name="notification_edit_biography">Biyografi değiştirildi</string>
+
+    <string name="notification_verify_add">Hesabınız onaylandı</string>
+    <string name="notification_verify_delete">Hesabınızın onayı kaldırıldı</string>
+
+    <string name="notification_new_admin_message">Yeni admin mesajı alındı</string>
+
+    <string name="notification_new_follower">Yeni takipçi kazandınız :</string>
+
+    <string name="notification_new_report">Yeni uyarı alındı</string>
+
+    <string name="notification_new_post_block">İçerik paylaşma yasaklandı</string>
+
+    <string name="notification_new_comment_block">Görüş bildirme yasaklandı</string>
+
+    <string name="notification_new_report_block">Rapor gönderme yasaklandı</string>
+
+    <string name="notification_new_contact_block">Admin iletişimi yasaklandı</string>
+
+    <string name="notification_edit_block">Profil düzenleme yasaklandı</string>
+
+    <!-- ######################################## NOTIFICATION XML ######################################## -->
+
+
+
+
+
+    <!-- ######################################## TIME XML ######################################## -->
+
+    <string name="time_year">y</string>
+    <string name="time_month">ay</string>
+    <string name="time_week">h</string>
+    <string name="time_day">g</string>
+    <string name="time_yesterday">dün</string>
+    <string name="time_hour">s</string>
+    <string name="time_minute">dk</string>
+    <string name="time_second">sn</string>
+    <string name="time_now">şimdi</string>
+
+    <!-- ######################################## TIME XML ######################################## -->
+
+
+
+
+
+    <!-- ######################################## UI XML ######################################## -->
+
+    <!-- NAVIGATION MENU [UI] -->
+
+    <string name="navigation">Gezinti</string>
+    <string name="feed">Anasayfa</string>
+    <string name="search">Ara</string>
+    <string name="newpost">Yeni Öneri</string>
+    <string name="notification">Bildirim</string>
+    <string name="profile">Profil</string>
+
+    <string name="savedpost">Favoriler</string>
+
+    <string name="my_interests">İlgilendiklerim</string>
+
+    <string name="settings">Ayarlar</string>
+    <string name="app_settings">Uygulama Ayarları</string>
+    <string name="edit_profile">Profili Düzenle</string>
+
+    <string name="community">Topluluk</string>
+    <string name="contact_us">Bize ulaşın</string>
+    <string name="invitation">Davet et</string>
+    <string name="comment">Yorum yap</string>
+    <string name="visit">Ziyaret et</string>
+    <string name="more_app">Daha fazlası</string>
+
+    <string name="connection">Bağlantı</string>
+    <string name="connection_logout">Çıkış yap</string>
+
+
+    <!-- LOGIN SCREEN [UI] -->
+
+    <string name="reset_password">Şifrenizi mi unuttunuz ?</string>
+    <string name="rememberme">Beni Hatırla</string>
+    <string name="login">GİRİŞ YAP</string>
+    <string name="Sign_up">KAYIT OL</string>
+
+
+    <!-- CONTENT REPORT [UI] -->
+
+    <string name="inappropriate_post">Uygunsuz içerik</string>
+    <string name="wrong_post">Hatalı içerik</string>
+    <string name="spam_post">Spam içerik</string>
+    <string name="wrong_category">Yanlış kategori</string>
+
+
+    <!-- USER REPORT [UI] -->
+
+    <string name="inappropriate_name">Uygunsuz isim</string>
+    <string name="inappropriate_username">Uygunsuz kullanıcıadı</string>
+    <string name="inappropriate_biyography">Uygunsuz biyografi</string>
+    <string name="inappropriate_pp">Uygunsuz profil fotoğrafı</string>
+    <string name="wrong_profile">Hatalı profil</string>
+
+
+    <!-- PROFILE SCREEN [UI] -->
+
+    <string name="follow">TAKİP ET</string>
+    <string name="unfollow">TAKİBİ BIRAK</string>
+
+
+    <!-- SETTINGS SCREEN [UI] -->
+
+    <string name="right_menu">Sağ Menü</string>
+    <string name="bottom_menu">Alt Menü</string>
+    <string name="side_menu_alignment">Menü Hizalama</string>
+
+
+    <!-- INPUT [UI] -->
+
+    <string name="recommendation">Öneri nedir ?</string>
+    <string name="message">Mesaj nedir ?</string>
+
+
+    <!-- OTHER [UI] -->
+
+    <string name="admin_message">Yönetici Mesajı</string>
+    <string name="system_message">Sistem Mesajı</string>
+    <string name="delete_account">Hesap Sil</string>
+    <string name="likemode_on">Beğeni açık</string>
+    <string name="likemode_off">Beğeni kapalı</string>
+    <string name="username">Kullanıcı Adı</string>
+    <string name="user_real_name">Gerçek ad</string>
+    <string name="biography">Biyografi</string>
+    <string name="read_more">Devam et >>&#160;</string>
+    <string name="user_agreement">Kullanıcı Sözleşmesi</string>
+    <string name="i_agree">Kabul ediyorum</string>
+    <string name="content_rules">Yasaklı İçerik</string>
+    <string name="search_content">İçerik ara</string>
+    <string name="rating_comment">Yorum (İsteğe bağlı)</string>
+    <string name="comment_title">Yorum</string>
+
+    <string name="new_content_exist">Yeni içerikler var</string>
+
+    <string name="exit_text">Çıkmak için geriye basın</string>
+
+    <string name="desc">Resim</string>
+    <string name="said">dedi ki</string>
+
+
+    <!-- POST RULES [UI] -->
+
+    <string name="negative_attitude">- Nefret söylemi / Rahatsız edici - Saldırgan dil</string>
+    <string name="hate_speech">- Din, dil, ırk, cinsiyet, sınıf ayrımı</string>
+    <string name="politics">- Siyaset / Politika</string>
+    <string name="personal_information">- Kişisel bilgiler</string>
+    <string name="advertising">- Reklam</string>
+    <string name="spam">- Spam</string>
+
+    <!-- ######################################## UI XML ######################################## -->
+
+
+
+
+
+    <!-- ######################################## WORDS XML ######################################## -->
+
+    <string name="userFollowing">Takip</string>
+    <string name="userFollower">Takipçi</string>
+
+    <string name="email">E-Mail</string>
+    <string name="password">Şifre</string>
+
+    <string name="okey">TAMAM</string>
+    <string name="cancel">İptal</string>
+    <string name="stop">Durdur</string>
+
+    <string name="send">Gönder</string>
+    <string name="check">Kontrol Et</string>
+
+    <string name="change">Değiştir</string>
+    <string name="save">Kaydet</string>
+    <string name="delete">Sil</string>
+    <string name="remove">Kaldır</string>
+    <string name="clear">Temizle</string>
+
+    <string name="select">Seç</string>
+    <string name="scroll">Kaydır</string>
+    <string name="post">Gönderi</string>
+    <string name="error">Hata</string>
+    <string name="yes">Evet</string>
+
+    <string name="verification">Doğrulama</string>
+
+    <string name="storage">Depolama</string>
+
+    <string name="listen">Dinle</string>
+    <string name="refresh">Yenile</string>
+    <string name="share">Paylaş</string>
+    <string name="report">Rapor</string>
+    <string name="caution">Uyarı</string>
+    <string name="exit">Çıkış</string>
+    <string name="rating">Değerlendirme</string>
+
+    <string name="hi">Merhaba</string>
+    <string name="sure">Elbette</string>
+    <string name="later">Sonra</string>
+
+    <string name="graphics">Grafik</string>
+    <string name="general">Genel</string>
+    <string name="animation">Animasyon</string>
+
+    <!-- ######################################## WORDS XML ######################################## -->
+
+
+
+
+
+    <!-- ######################################## STRING XML ######################################## -->
+
+    <string name="app_name">Fikirzadem</string>
+
+    <string name="playstore_app_link">https://play.google.com/store/apps/details?id=com.basesoftware.fikirzadem</string>
+    <string name="playstore_developer_link">https://play.google.com/store/apps/dev?id=5331910607568886585</string>
+
+    <string name="contractUrl">https://basesoftwaremobile.blogspot.com/2022/04/fikirzadem-privacy-policy.html</string>
+
+    <string name="invitation_message">Fikirzadem yeni sosyal medya :</string>
+    <string name="suggestion">Öneri :</string>
+    <string name="formore">Daha fazlası için :</string>
+
+    <string name="first_admin_message_tr">Fikirzademe hoşgeldiniz</string>
+    <string name="first_admin_message_en">Welcome to the Fikirzadem</string>
+
+    <!-- What is your idea -->
+    <string name="your_idea">Senin görüşün nedir ?</string>
+    <string name="like_app_text">Düşüncelerine önem veriyoruz ve seni dinliyoruz :) Uygulamamızı beğendiysen decerelendirir misin? Yorum yaparak geliştirmemize yardım edebilirsin ^_^</string>
+    <string name="share_app_text">Fikirzadem ailesini büyütmemize yardım eder misin :) Daha az reklam ve daha çok kullanıcı hedefimize ulaşmamız için arkadaşlarını Fikirzadem uygulamasına davet edebilirsin ^_^</string>
+
+    <!-- ######################################## STRING XML ######################################## -->
+
+
+</resources>

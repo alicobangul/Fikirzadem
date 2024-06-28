@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- USER [INFO] -->
+
+    <string name="banned">You have been removed from the system</string>
+    <string name="create_new_user">Please create new account</string>
+
+
+    <!-- CHANGE [INFO] -->
+
+    <string name="save_changed">The change was saved</string>
+    <string name="send_data_update_fail">No changes</string>
+
+
+    <!-- COMMENT [INFO] -->
+
+    <string name="comment_delete_refresh">Please refresh the comment</string>
+    <string name="comment_delete">Do you want to delete the comment?</string>
+    <string name="comment_delete_success">Comment have been deleted</string>
+    <string name="comment_delete_fail">Comment deletion failed</string>
+    <string name="comment_not_exist">No comment found</string>
+    <string name="comment_update_success">Comment has been updated</string>
+    <string name="comment_update_fail">Comment refresh failed</string>
+
+
+    <!-- ACCOUNT [INFO] -->
+
+    <string name="delete_account_text">Do you want to delete the account?</string>
+    <string name="delete_account_fail">The account could not be deleted</string>
+
+
+    <!-- PROFILE [INFO] -->
+
+    <string name="profile_update_success">The profile has been updated</string>
+    <string name="profile_update_fail">The profile could not be updated</string>
+    <string name="user_edit_banned">Profile editing is banned</string>
+
+    <string name="profile_error">Profile error</string>
+    <string name="profile_created">Created a profile</string>
+    <string name="profile_creating">Creating a profile</string>
+    <string name="register_fail">Registration failed</string>
+
+
+    <!-- E-MAIL [INFO] -->
+
+    <string name="email_error">E-mail error</string>
+    <string name="new_mail_fail">Mail replacement failed</string>
+    <string name="new_mail_ok">The mail has been changed</string>
+    <string name="new_mail_change_fail">The mail is the same</string>
+    <string name="register_banneduser_exists">This mail is banned</string>
+    <string name="email_confirm">Please confirm your email address</string>
+    <string name="check_mailbox">Check your mailbox</string>
+
+
+    <!-- PASSWORD [INFO] -->
+
+    <string name="new_pass_change_fail">Same password</string>
+    <string name="new_pass_fail">Password change failed</string>
+    <string name="new_pass_ok">The password has been changed</string>
+    <string name="password_error">Password minimum 6 characters</string>
+    <string name="wrong_password">Wrong password</string>
+
+
+    <!-- ERROR [INFO] -->
+
+    <string name="check_internet_connection">Check your internet connection</string>
+    <string name="check_mailbox_error">The link could not be sent</string>
+    <string name="user_name_available">This username is being used</string>
+    <string name="info_empty">Missing information</string>
+    <string name="unknown_error">Uknown error</string>
+
+
+    <!-- PERMISSION & GALLERY [INFO] -->
+
+    <string name="permission_gallery">Permission is required to go to the gallery</string>
+    <string name="give_permission">Allow</string>
+    <string name="permission_fail">Permission denied</string>
+    <string name="unselected">The image was not selected</string>
+
+
+    <!-- LOGIN [INFO] -->
+
+    <string name="login_success">Login was made</string>
+    <string name="login_fail">Unable to login</string>
+    <string name="login_account">You can sign up</string>
+    <string name="user_notfound">User not found</string>
+
+
+    <!-- ADMIN MESSAGE [INFO] -->
+
+    <string name="msg_complete">The message has been forwarded</string>
+    <string name="msg_error">Message could not be forwarded</string>
+    <string name="msg_error_new">Please try again tomorrow</string>
+
+
+    <!-- REPORT MESSAGE [INFO] -->
+
+    <string name="report_available">It was previously reported</string>
+    <string name="report_send_success">The report has been sent</string>
+    <string name="report_send_fail">The report could not be sent</string>
+
+
+    <!-- POST [INFO] -->
+
+    <string name="favorite_post_delete_in_room">Delete your favorite posts ?</string>
+    <string name="favorite_post_delete_success">Favorite posts have been deleted</string>
+
+    <string name="addpost_complete">The post was shared</string>
+    <string name="addpost_error">The post could not be shared</string>
+    <string name="addpost_block">You are banned from sharing posts</string>
+
+    <string name="like_fail_my_post">The content owner cannot express an opinion</string>
+    <string name="likedislike_available">Earlier opinions were expressed</string>
+    <string name="likedislike_success">Comments have been submitted</string>
+    <string name="likedislike_fail">Comments could not be sent</string>
+
+    <string name="post_refresh_for_report">Have you refreshed the content?</string>
+    <string name="post_delete_question">Do you want to delete the content?</string>
+    <string name="post_save_in_favorite_room">Recorded content</string>
+    <string name="post_delete_in_firebase_fail">Content deletion failed</string>
+    <string name="post_delete_in_favorite_success">Content has been deleted from favorites</string>
+    <string name="post_delete_in_favorite_fail">Could not delete content from favorites</string>
+    <string name="post_profile_feed_download_fail">Contents could not be accessed</string>
+
+    <string name="post_refresh_success">Content has been updated</string>
+    <string name="post_refresh_fail">Content refresh failed</string>
+    <string name="post_not_found">No content found</string>
+    <string name="post_fail">Unable to upload content</string>
+
+    <string name="post_not_exists">No content</string>
+    <string name="old_post_fail">No other content</string>
+    <string name="new_post_fail">No new content</string>
+    <string name="minchar_limit">Missing content, minimum of 30 characters</string>
+    <string name="spam_error">Spam error, check the content</string>
+
+
+    <!-- SOCIAL & USER [INFO] -->
+
+    <string name="user_unfollow_success">Removed from follow-up</string>
+    <string name="user_unfollow_fail">The chase, the extraction fails</string>
+    <string name="user_last_follow">The user was recently followed</string>
+    <string name="user_follow_success">The user is being followed</string>
+    <string name="user_follow_fail">The user could not be tracked</string>
+
+    <string name="user_fail">Users could not load</string>
+    <string name="user_not_exists">No users</string>
+    <string name="more_user_fail">There are no other users</string>
+    <string name="user_deleted">The user has been deleted</string>
+    <string name="user_available">User available</string>
+
+    <string name="user_or_post_deleted">The user or content has been deleted</string>
+
+    <string name="msg_error_tryagain">Please try again</string>
+
+</resources>

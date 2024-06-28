@@ -1,0 +1,23 @@
+<resources>
+
+    <string name="app_name">Fikirzadem</string>
+
+    <string name="playstore_app_link">https://play.google.com/store/apps/details?id=com.basesoftware.fikirzadem</string>
+    <string name="playstore_developer_link">https://play.google.com/store/apps/dev?id=5331910607568886585</string>
+
+    <string name="contractUrl">https://basesoftwaremobile.blogspot.com/2022/04/fikirzadem-privacy-policy.html</string>
+
+    <string name="invitation_message">Fikirzadem new social media :</string>
+    <string name="suggestion">Suggestion :</string>
+    <string name="formore">For more :</string>
+
+    <string name="first_admin_message_tr">Fikirzademe hoşgeldiniz</string>
+    <string name="first_admin_message_en">Welcome to the Fikirzadem</string>
+
+    <string name="your_idea">What is your idea ?</string>
+
+    <string name="like_app_text">We care about your thoughts and listen to you :) If you like our application, would you rate it? You can help us improve it by commenting ^_^</string>
+    <string name="share_app_text">Can you help us raise the Fikirzadem family :) You can invite your friends to the Fikirzadem application to achieve our goal of fewer ads and more users ^_^</string>
+
+
+</resources>

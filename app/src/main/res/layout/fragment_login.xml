@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable name="viewmodel" type="com.basesoftware.fikirzadem.presentation.viewmodel.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_login_screen"
+        tools:context=".LoginActivity">
+
+        <ImageView
+            android:id="@+id/imgLoginUserIco"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:background="@drawable/login_user_ico"
+            android:contentDescription="@string/desc"
+            android:visibility="@{viewmodel.loginUiState.uiEnable == true ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtUserMailLayout"
+            app:layout_constraintStart_toStartOf="@+id/txtUserMailLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.097" />
+
+        <ProgressBar
+            android:id="@+id/progressMain"
+            style="@style/mainProgressBar"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:scaleX="-1"
+            android:visibility="@{viewmodel.loginUiState.uiEnable == true ? View.INVISIBLE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtUserMailLayout"
+            app:layout_constraintStart_toStartOf="@+id/txtUserMailLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.095" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtUserMailLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:textColorHint="@android:color/darker_gray"
+            app:boxBackgroundMode="outline"
+            app:boxCollapsedPaddingTop="10dp"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:endIconMode="clear_text"
+            app:expandedHintEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:hintTextColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.272">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtUserMail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="abcdefghijklmnopqrstuvwxyz0123456789@-_."
+                android:enabled="@{viewmodel.loginUiState.uiEnable}"
+                android:afterTextChanged="@{(editable) -> viewmodel.setUserMailText(editable.toString())}"
+                android:text="@{viewmodel.loginUiState.userMailText}"
+                android:imeOptions="actionNext"
+                android:inputType="textVisiblePassword"
+                android:maxLines="1"
+                android:saveEnabled="true"
+                android:singleLine="true"
+                tools:ignore="HardcodedText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtUserPasswordLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:textColorHint="@android:color/darker_gray"
+            app:boxBackgroundMode="outline"
+            app:boxCollapsedPaddingTop="10dp"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:endIconMode="password_toggle"
+            app:expandedHintEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:hintTextColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.415">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtUserPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="@{viewmodel.loginUiState.uiEnable}"
+                android:afterTextChanged="@{(editable) -> viewmodel.setUserPasswordText(editable.toString())}"
+                android:text="@{viewmodel.loginUiState.userPasswordText}"
+                android:imeOptions="actionGo"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:saveEnabled="true"
+                android:singleLine="true"
+                tools:ignore="HardcodedText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtUserPasswordLayout"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="@+id/txtUserPasswordLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.520">
+
+            <CheckBox
+                android:id="@+id/chkRemember"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:buttonTint="@color/white"
+                android:enabled="@{viewmodel.loginUiState.uiEnable}"
+                android:checked="@{viewmodel.loginUiState.rememberMe}"
+                android:onCheckedChangeListener="@{(view, isChecked) -> viewmodel.rememberChecked(isChecked)}"
+                android:gravity="start|center_vertical"
+                android:minHeight="48dp"
+                android:saveEnabled="true"
+                android:text="@string/rememberme"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtResetPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="@{viewmodel.loginUiState.uiEnable}"
+                android:onClick="@{() -> viewmodel.resetPasswordClick()}"
+                android:minHeight="20dp"
+                android:text="@string/reset_password"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtUserPasswordLayout"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="@+id/txtUserPasswordLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.625">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogin"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/shape_user_sheet_button"
+                android:enabled="@{viewmodel.loginUiState.uiEnable}"
+                android:text="@string/login"
+                android:onClick="@{(view) -> viewmodel.userLogin()}"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRegister"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/shape_user_sheet_button"
+                android:enabled="@{viewmodel.loginUiState.uiEnable}"
+                android:onClick="@{(view) -> viewmodel.userRegister()}"
+                android:text="@string/Sign_up"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

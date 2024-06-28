@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View" />
+        <import type="android.R.string" />
+        <variable name="edit" type="com.basesoftware.fikirzadem.presentation.viewmodel.EditProfileViewModel" />
+        <variable name="shared" type="com.basesoftware.fikirzadem.presentation.viewmodel.SharedViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ContentDescription">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:longClickable="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            tools:context=".presentation.ui.editprofile.EditProfileFragment">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:longClickable="false"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:id="@+id/linearEditLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/shape_box"
+                    android:gravity="center"
+                    android:longClickable="false"
+                    android:orientation="vertical"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="10dp"
+                    android:visibility="@{edit.reAuthValue == true ? View.GONE : View.VISIBLE}">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/login"
+                        android:textColor="#FFFFFF" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtReAuthPassLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:hint="@string/password"
+                        android:textColorHint="#8899A6"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:endIconMode="password_toggle"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextColor="#8899A6"
+                        app:layout_constraintTop_toBottomOf="@+id/txtEditUserMailLayout">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtReAuthPass"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled="@{edit.uiEnableValue}"
+                            android:imeOptions="actionDone"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            tools:ignore="HardcodedText" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnEditLogin"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/shape_user_sheet_button"
+                        android:enabled="@{edit.uiEnableValue}"
+                        android:text="@string/login"
+                        android:textColor="#FFFFFF"
+                        app:layout_constraintTop_toBottomOf="@+id/txtEditPasswordLayout" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearVerify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/shape_box"
+                    android:gravity="center"
+                    android:longClickable="false"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    android:visibility="@{edit.reAuthValue == true ? View.VISIBLE : View.GONE}">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="20dp"
+                        android:text="@string/verification"
+                        android:textAllCaps="true"
+                        android:textColor="#FFFFFF" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtMailVerifyLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_weight="1"
+                            android:enabled="false"
+                            android:hint="@string/email"
+                            android:textColorHint="#8899A6"
+                            app:boxBackgroundMode="outline"
+                            app:boxCollapsedPaddingTop="10dp"
+                            app:boxCornerRadiusBottomEnd="10dp"
+                            app:boxCornerRadiusBottomStart="10dp"
+                            app:boxCornerRadiusTopEnd="10dp"
+                            app:boxCornerRadiusTopStart="10dp"
+                            app:endIconMode="clear_text"
+                            app:expandedHintEnabled="true"
+                            app:hintAnimationEnabled="true"
+                            app:hintEnabled="true"
+                            app:hintTextColor="#8899A6">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtMailVerify"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:enabled="false"
+                                android:inputType="textVisiblePassword"
+                                android:maxLines="1"
+                                android:text="@{shared.user.userMail}"
+                                tools:ignore="HardcodedText,DuplicateClickableBoundsCheck" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageView
+                            android:id="@+id/imgVerifyIco"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginEnd="10dp"
+                            android:emailVerify="@{shared.user.userEmailConfirm}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnSendVerifyMail"
+                            style="@style/SocialButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_user_sheet_button"
+                            android:clickable="false"
+                            android:enabled="@{edit.uiEnableValue}"
+                            android:padding="10dp"
+                            android:text="@string/send"
+                            android:textAlignment="center"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp"
+                            android:visibility="@{shared.user.userEmailConfirm == true ? View.GONE : View.VISIBLE}" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnChkVerify"
+                            style="@style/SocialButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_user_sheet_button"
+                            android:clickable="false"
+                            android:enabled="@{edit.uiEnableValue}"
+                            android:padding="10dp"
+                            android:text="@string/check"
+                            android:textAlignment="center"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp"
+                            android:visibility="@{shared.user.userEmailConfirm == true ? View.GONE : View.VISIBLE}" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearEditProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/shape_box"
+                    android:longClickable="false"
+                    android:orientation="vertical"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="15dp"
+                    android:visibility="@{edit.reAuthValue == true ? View.VISIBLE : View.GONE}">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/profile"
+                        android:textAllCaps="true"
+                        android:textColor="#FFFFFF" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/linearNewPpShow"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/imgEditPpSmall"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="bottom"
+                                android:layout_weight="1"
+                                android:src="@drawable/login_user_ico"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/imgEditPpMedium"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="bottom"
+                                android:layout_weight="1"
+                                android:src="@drawable/login_user_ico"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/imgEditPpOriginal"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/login_user_ico"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearNewPpBtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:orientation="horizontal"
+                            android:padding="5dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearNewPpShow">
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/btnSelectNewPp"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:layout_marginEnd="3dp"
+                                android:layout_marginBottom="2dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_user_sheet_button"
+                                android:enabled="@{edit.uiEnableValue}"
+                                android:text="@string/select"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="TouchTargetSizeCheck" />
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/btnDeleteNewPp"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:layout_marginEnd="3dp"
+                                android:layout_marginBottom="2dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_user_sheet_button"
+                                android:enabled="@{edit.uiEnableValue}"
+                                android:text="@string/remove"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="TouchTargetSizeCheck" />
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/btnCancelNewPp"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:layout_marginBottom="2dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_user_sheet_button"
+                                android:enabled="@{edit.uiEnableValue}"
+                                android:text="@string/cancel"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="TouchTargetSizeCheck" />
+
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearNewRealName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtEditRealNameLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:hint="@string/user_real_name"
+                            android:textColorHint="#8899A6"
+                            app:boxBackgroundMode="none"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="20"
+                            app:endIconMode="clear_text"
+                            app:expandedHintEnabled="false"
+                            app:hintAnimationEnabled="true"
+                            app:hintEnabled="true"
+                            app:hintTextColor="#8899A6">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtEditRealName"
+                                android:layout_width="match_parent"
+                                android:layout_height="55dp"
+                                android:digits="ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx "
+                                android:enabled="@{edit.uiEnableValue}"
+                                android:imeOptions="actionDone"
+                                android:inputType="textVisiblePassword"
+                                android:longClickable="false"
+                                android:maxLength="20"
+                                android:maxLines="1"
+                                android:saveEnabled="true"
+                                android:singleLine="true"
+                                android:spaceFilter="@{true}"
+                                android:textColor="@android:color/darker_gray"
+                                android:textMenuFilter="@{true}"
+                                android:textSize="15sp"
+                                tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageView
+                            android:id="@+id/imgEditRealName"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="25dp"
+                            android:enabled="@{edit.uiEnableValue}"
+                            app:srcCompat="@drawable/undo" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearNewUserName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtEditUserNameLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:hint="@string/username"
+                            android:textColorHint="#8899A6"
+                            app:boxBackgroundMode="none"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="15"
+                            app:endIconMode="clear_text"
+                            app:expandedHintEnabled="false"
+                            app:hintAnimationEnabled="true"
+                            app:hintEnabled="true"
+                            app:hintTextColor="#8899A6">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtEditUserName"
+                                android:layout_width="match_parent"
+                                android:layout_height="55dp"
+                                android:digits="abcdefghijklmnoprstuvyzqwx0123456789"
+                                android:enabled="@{edit.uiEnableValue}"
+                                android:imeOptions="actionDone"
+                                android:inputType="textVisiblePassword"
+                                android:longClickable="false"
+                                android:maxLength="15"
+                                android:maxLines="1"
+                                android:saveEnabled="true"
+                                android:singleLine="true"
+                                android:spaceFilter="@{true}"
+                                android:textColor="@android:color/darker_gray"
+                                android:textMenuFilter="@{true}"
+                                android:textSize="15sp"
+                                tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageView
+                            android:id="@+id/imgEditUserName"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="25dp"
+                            android:enabled="@{edit.uiEnableValue}"
+                            app:srcCompat="@drawable/undo" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearNewBiography"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtEditBiographyLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:hint="@string/biography"
+                            android:textColorHint="#8899A6"
+                            app:boxBackgroundMode="none"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="350"
+                            app:endIconMode="clear_text"
+                            app:expandedHintEnabled="false"
+                            app:hintAnimationEnabled="true"
+                            app:hintEnabled="true"
+                            app:hintTextColor="#8899A6">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtEditBiography"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:digits="ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx0123456789.,;!?$#%+-_/*()[]{} "
+                                android:enabled="@{edit.uiEnableValue}"
+                                android:imeOptions="actionDone"
+                                android:inputType="textVisiblePassword"
+                                android:longClickable="false"
+                                android:maxLength="350"
+                                android:saveEnabled="true"
+                                android:spaceFilter="@{true}"
+                                android:textColor="@android:color/darker_gray"
+                                android:textMenuFilter="@{true}"
+                                android:textSize="15sp"
+                                tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageView
+                            android:id="@+id/imgEditBiography"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="15dp"
+                            android:enabled="@{edit.uiEnableValue}"
+                            app:srcCompat="@drawable/undo" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearNewInstagram"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtEditInstagramLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:hint="Instagram"
+                            android:textColorHint="#8899A6"
+                            app:boxBackgroundMode="none"
+                            app:endIconMode="clear_text"
+                            app:expandedHintEnabled="false"
+                            app:hintAnimationEnabled="true"
+                            app:hintEnabled="true"
+                            app:hintTextColor="#8899A6"
+                            tools:ignore="HardcodedText">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtEditInstagram"
+                                android:layout_width="match_parent"
+                                android:layout_height="55dp"
+                                android:digits="abcdefghijklmnopqrstuvwxyz0123456789@-_."
+                                android:enabled="@{edit.uiEnableValue}"
+                                android:imeOptions="actionDone"
+                                android:inputType="textVisiblePassword"
+                                android:longClickable="false"
+                                android:maxLength="50"
+                                android:maxLines="1"
+                                android:saveEnabled="true"
+                                android:singleLine="true"
+                                android:spaceFilter="@{true}"
+                                android:textColor="@android:color/darker_gray"
+                                android:textMenuFilter="@{true}"
+                                android:textSize="15sp"
+                                tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageView
+                            android:id="@+id/imgEditInstagram"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="25dp"
+                            android:enabled="@{edit.uiEnableValue}"
+                            app:srcCompat="@drawable/post_rule" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearNewTwitter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtEditTwitterLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:hint="Twitter"
+                            android:textColorHint="#8899A6"
+                            app:boxBackgroundMode="none"
+                            app:endIconMode="clear_text"
+                            app:expandedHintEnabled="false"
+                            app:hintAnimationEnabled="true"
+                            app:hintEnabled="true"
+                            app:hintTextColor="#8899A6"
+                            tools:ignore="HardcodedText">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtEditTwitter"
+                                android:layout_width="match_parent"
+                                android:layout_height="55dp"
+                                android:digits="abcdefghijklmnopqrstuvwxyz0123456789@-_."
+                                android:enabled="@{edit.uiEnableValue}"
+                                android:imeOptions="actionDone"
+                                android:inputType="textVisiblePassword"
+                                android:longClickable="false"
+                                android:maxLength="50"
+                                android:maxLines="1"
+                                android:saveEnabled="true"
+                                android:singleLine="true"
+                                android:spaceFilter="@{true}"
+                                android:textColor="@android:color/darker_gray"
+                                android:textMenuFilter="@{true}"
+                                android:textSize="15sp"
+                                tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageView
+                            android:id="@+id/imgEditTwitter"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="25dp"
+                            android:enabled="@{edit.uiEnableValue}"
+                            app:srcCompat="@drawable/post_rule" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearNewFacebook"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtEditFacebookLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:hint="Facebook"
+                            android:textColorHint="#8899A6"
+                            app:boxBackgroundMode="none"
+                            app:endIconMode="clear_text"
+                            app:expandedHintEnabled="false"
+                            app:hintAnimationEnabled="true"
+                            app:hintEnabled="true"
+                            app:hintTextColor="#8899A6"
+                            tools:ignore="HardcodedText">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtEditFacebook"
+                                android:layout_width="match_parent"
+                                android:layout_height="55dp"
+                                android:digits="abcdefghijklmnopqrstuvwxyz0123456789@-_."
+                                android:enabled="@{edit.uiEnableValue}"
+                                android:imeOptions="actionDone"
+                                android:inputType="textVisiblePassword"
+                                android:longClickable="false"
+                                android:maxLength="50"
+                                android:maxLines="1"
+                                android:saveEnabled="true"
+                                android:singleLine="true"
+                                android:spaceFilter="@{true}"
+                                android:textColor="@android:color/darker_gray"
+                                android:textMenuFilter="@{true}"
+                                android:textSize="15sp"
+                                tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageView
+                            android:id="@+id/imgEditFacebook"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="25dp"
+                            android:enabled="@{edit.uiEnableValue}"
+                            app:srcCompat="@drawable/post_rule" />
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnUpdateSend"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_user_sheet_button"
+                        android:enabled="@{edit.uiEnableValue}"
+                        android:text="@string/save"
+                        android:textColor="#FFFFFF"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearEditGeneral"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/shape_box"
+                    android:longClickable="false"
+                    android:orientation="vertical"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="10dp"
+                    android:visibility="@{edit.reAuthValue == true ? View.VISIBLE : View.GONE}">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:longClickable="false"
+                        android:text="@string/general"
+                        android:textAllCaps="true"
+                        android:textColor="#FFFFFF" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtEditMailLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:layout_weight="1"
+                            android:hint="@string/email"
+                            android:longClickable="false"
+                            android:textColorHint="#8899A6"
+                            app:boxBackgroundMode="outline"
+                            app:boxCollapsedPaddingTop="10dp"
+                            app:boxCornerRadiusBottomEnd="10dp"
+                            app:boxCornerRadiusBottomStart="10dp"
+                            app:boxCornerRadiusTopEnd="10dp"
+                            app:boxCornerRadiusTopStart="10dp"
+                            app:endIconMode="clear_text"
+                            app:expandedHintEnabled="true"
+
+                            app:hintAnimationEnabled="true"
+                            app:hintEnabled="true"
+                            app:hintTextColor="#8899A6">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtEditMail"
+                                android:layout_width="match_parent"
+                                android:layout_height="55dp"
+                                android:digits="abcdefghijklmnopqrstuvwxyz0123456789@-_."
+                                android:enabled="@{edit.uiEnableValue}"
+                                android:imeOptions="actionDone"
+                                android:inputType="textEmailAddress"
+                                android:maxLines="1"
+                                android:saveEnabled="true"
+                                android:singleLine="true"
+                                android:spaceFilter="@{true}"
+                                android:textMenuFilter="@{true}"
+                                tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnChangeMail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="4"
+                            android:background="@drawable/shape_user_sheet_button"
+                            android:enabled="@{edit.uiEnableValue}"
+                            android:longClickable="false"
+                            android:text="@string/change"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10sp"
+                            app:layout_constraintTop_toBottomOf="@+id/txtEditMailLayout" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtNewPassLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:layout_weight="1"
+                            android:hint="@string/password"
+                            android:longClickable="false"
+                            android:textColorHint="#8899A6"
+                            app:boxBackgroundMode="outline"
+                            app:boxCollapsedPaddingTop="10dp"
+                            app:boxCornerRadiusBottomEnd="10dp"
+                            app:boxCornerRadiusBottomStart="10dp"
+                            app:boxCornerRadiusTopEnd="10dp"
+                            app:boxCornerRadiusTopStart="10dp"
+                            app:endIconMode="password_toggle"
+                            app:expandedHintEnabled="true"
+                            app:hintAnimationEnabled="true"
+                            app:hintEnabled="true"
+                            app:hintTextColor="#8899A6">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtNewPass"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:enabled="@{edit.uiEnableValue}"
+                                android:inputType="textPassword"
+                                android:longClickable="false"
+                                android:maxLines="1"
+                                android:saveEnabled="true"
+                                tools:ignore="HardcodedText" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnChangePassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="4"
+                            android:background="@drawable/shape_user_sheet_button"
+                            android:enabled="@{edit.uiEnableValue}"
+                            android:longClickable="false"
+                            android:text="@string/change"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10sp"
+                            app:layout_constraintTop_toBottomOf="@+id/txtEditPasswordLayout" />
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnDeleteAccount"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/shape_user_sheet_button"
+                        android:enabled="@{edit.uiEnableValue}"
+                        android:text="@string/delete_account"
+                        android:textColor="#FFFFFF"
+                        app:layout_constraintTop_toBottomOf="@+id/txtEditPasswordLayout" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/progressEditProfile"
+            style="@style/progressBar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:indeterminate="true"
+            android:indeterminateOnly="false"
+            android:indeterminateTint="#FFFFFF"
+            android:saveEnabled="false"
+            android:visibility="@{edit.uiEnableValue == true ? View.INVISIBLE : View.VISIBLE}"
+            android:soundEffectsEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.935" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,166 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
+    id 'kotlin-kapt'
+    id("com.google.dagger.hilt.android")
+    id ("com.google.gms.google-services")
+}
+
+android {
+
+    namespace "com.basesoftware.fikirzadem"
+
+    defaultConfig {
+        applicationId "com.basesoftware.fikirzadem"
+        minSdk 21
+        targetSdk 34
+        compileSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+}
+
+
+dependencies {
+
+    // ----- OTHER UI [ AppCompat - ConstraintLayout - Swipe Layout - RecyclerView ] ----- //
+    def app_compat = "1.4.0"
+    def constraint_layout = "2.1.3"
+    def swipe_refresh_layout = "1.1.0"
+    def recyclerview = "1.2.1"
+
+    // ----- OTHER TEST [ OkHttp - Legacy - Espresso - JUnit ] ----- //
+    def grpc_okhttp = "1.40.1"
+    def legacy = "1.0.0"
+    def espresso_core = "3.4.0"
+    def junit = "1.1.3"
+
+    // ----- DATA [ DataStore - Room - Paging ] ----- //
+    def data_store = "1.1.1"
+    def roomVersion = "2.3.0"
+    def paging_version = "3.1.0"
+
+    // ----- TECHNICAL UI [ Material - Fragment - Navigation ] ----- //
+    def material = "1.6.0-alpha03"
+    def fragment_ktx = "1.4.0"
+    def nav_version = "2.4.2"
+    def hilt = "2.5.0"
+
+    // ----- TECHNICAL [ Coroutines - Lifecycle ] ----- //
+    def coroutines = "1.5.2"
+    def coroutines_playservice = "1.6.0"
+    def lifecycle_version = "2.4.0"
+
+    // ----- GOOGLE [ Admob - Firebase ] ----- //
+    def admob = "21.0.0"
+    def firebase_bom = "30.3.1"
+
+    // ----- 3rd PARTY [ ImageCropper - Glide - CircleImage ] ----- //
+    def image_cropper = "4.3.3"
+    def glide_version = "4.12.0"
+    def circle_image = "3.1.0"
+
+
+
+    // --------------- ImageCropper - Glide - CircleImage --------------- //
+
+    implementation "com.vanniktech:android-image-cropper:$image_cropper"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+    implementation "de.hdodenhof:circleimageview:$circle_image"
+
+
+
+    // --------------- Admob - Firebase - InAppUpdate --------------- //
+
+    implementation platform("com.google.firebase:firebase-bom:$firebase_bom")
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation 'com.google.firebase:firebase-storage-ktx'
+    implementation 'com.google.firebase:firebase-functions-ktx'
+
+
+
+    // --------------- Coroutines - Lifecycle --------------- //
+
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines")
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutines_playservice"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+
+
+
+    // --------------- Material - Fragment - Navigation --------------- //
+
+    implementation "com.google.android.material:material:$material"
+    implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+    androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+
+
+
+    // --------------- DataStore - Room - Paging --------------- //
+
+    implementation "androidx.datastore:datastore-preferences:$data_store"
+    implementation "androidx.datastore:datastore-core:$data_store"
+    implementation ("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor ("androidx.room:room-compiler:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+
+
+
+    // --------------- OkHttp - Legacy - Espresso - JUnit --------------- //
+
+    implementation("io.grpc:grpc-okhttp:$grpc_okhttp")
+    implementation "androidx.legacy:legacy-support-v4:$legacy"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core"
+    testImplementation 'junit:junit:'
+    androidTestImplementation "androidx.test.ext:junit:$junit"
+
+
+
+    // --------------- AppCompat - ConstraintLayout - Swipe Layout - RecyclerView --------------- //
+
+    implementation "androidx.appcompat:appcompat:$app_compat"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layout"
+    implementation "androidx.recyclerview:recyclerview:$recyclerview"
+
+
+    // --------------- Hilt --------------- //
+
+    implementation("com.google.dagger:hilt-android:2.50")
+    kapt("com.google.dagger:hilt-android-compiler:2.50")
+
+}

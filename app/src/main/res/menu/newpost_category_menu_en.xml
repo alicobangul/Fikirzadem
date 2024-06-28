@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/category_animals" android:icon="@drawable/category_ico_animals" android:title="@string/category_animals" />
+
+    <item android:id="@+id/category_astrology" android:icon="@drawable/category_ico_astrology" android:title="@string/category_astrology" />
+
+    <item android:id="@+id/category_car" android:icon="@drawable/category_ico_car" android:title="@string/category_car" />
+
+    <item android:id="@+id/category_development" android:icon="@drawable/category_ico_development" android:title="@string/category_development" />
+
+    <item android:id="@+id/category_education" android:icon="@drawable/category_ico_education" android:title="@string/category_education" />
+
+    <item android:id="@+id/category_fashion" android:icon="@drawable/category_ico_fashion" android:title="@string/category_fashion" />
+
+    <item android:id="@+id/category_finance" android:icon="@drawable/category_ico_finance" android:title="@string/category_finance" />
+
+    <item android:id="@+id/category_food" android:icon="@drawable/category_ico_food" android:title="@string/category_food" />
+
+    <item android:id="@+id/category_general" android:icon="@drawable/category_ico_general" android:title="@string/category_general" />
+
+    <item android:id="@+id/category_healt" android:icon="@drawable/category_ico_health" android:title="@string/category_healt" />
+
+    <item android:id="@+id/category_hobby" android:icon="@drawable/category_ico_hobby" android:title="@string/category_hobby" />
+
+    <item android:id="@+id/category_momandbaby" android:icon="@drawable/category_ico_momandbaby" android:title="@string/category_momandbaby" />
+
+    <item android:id="@+id/category_nature" android:icon="@drawable/category_ico_nature" android:title="@string/category_nature" />
+
+    <item android:id="@+id/category_philosophy" android:icon="@drawable/category_ico_philosophy" android:title="@string/category_philosophy" />
+
+    <item android:id="@+id/category_psychology" android:icon="@drawable/category_ico_psychology" android:title="@string/category_psychology" />
+
+    <item android:id="@+id/category_shop" android:icon="@drawable/category_ico_shop" android:title="@string/category_shop" />
+
+    <item android:id="@+id/category_sport" android:icon="@drawable/category_ico_sport" android:title="@string/category_sport" />
+
+    <item android:id="@+id/category_technology" android:icon="@drawable/category_ico_technology" android:title="@string/category_technology" />
+
+    <item android:id="@+id/category_transport" android:icon="@drawable/category_ico_transport" android:title="@string/category_transport" />
+
+</menu>

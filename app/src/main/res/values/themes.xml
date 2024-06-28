@@ -1,0 +1,34 @@
+<resources>
+
+    <style name="Theme.Fikirzadem" parent="Theme.MaterialComponents.NoActionBar">
+
+        <item name="colorPrimary">@color/txtBoxColor</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu</item>
+        <item name="popupMenuStyle">@style/PopupMenu</item>
+        <item name="background">@color/theme</item>
+        <item name="colorAccent">#4DA6FF</item>
+    </style>
+
+    <style name="likeDialog">
+        <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
+        <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
+    </style>
+
+    <style name="PopupMenu" parent="ThemeOverlay.AppCompat.Dark"> <item name="android:popupBackground">#252C30</item> </style>
+
+    <style name="progressBar"><item name="android:progressDrawable">@drawable/shape_newpost_progressbar</item></style>
+
+    <style name="mainProgressBar"><item name="android:indeterminateDrawable">@drawable/shape_main_progressbar</item></style>
+
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="behavior_peekHeight">512dp</item>
+    </style>
+
+    <style name="SocialButton" parent="Widget.AppCompat.Button"><item name="background">@drawable/shape_user_sheet_button</item></style>
+
+</resources>

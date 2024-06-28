@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <import type="android.view.View" />
+        <variable name="shared" type="com.basesoftware.fikirzadem.presentation.viewmodel.SharedViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.search.SearchFragment"
+        tools:ignore="ContentDescription">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/searchConstraintUp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgSearchMyImg"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:download="@{shared.user.userProfilePicture}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgSearhUserVerify"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:background="@drawable/user_verify"
+                    android:foreground="@drawable/user_verify"
+                    android:src="@drawable/user_verify"
+                    android:visibility="@{shared.user.userEmailConfirm == true ? View.VISIBLE : View.INVISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/imgSearchMyImg"
+                    app:layout_constraintTop_toTopOf="@+id/imgSearchMyImg"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:srcCompat="@drawable/user_verify"
+                    tools:srcCompat="@drawable/user_verify"
+                    tools:ignore="UnusedAttribute" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtSearchTextLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:longClickable="false"
+                    app:boxBackgroundColor="#1F2326"
+                    app:boxBackgroundMode="outline"
+                    app:boxCollapsedPaddingTop="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="#1F2326"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:endIconMode="clear_text"
+                    app:expandedHintEnabled="true"
+                    app:hintAnimationEnabled="false"
+                    app:hintEnabled="false"
+                    app:hintTextColor="#FFFFFF"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imgSearchSettings"
+                    app:layout_constraintStart_toEndOf="@+id/imgSearchMyImg"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:startIconDrawable="@drawable/search_frag_text_search_ico">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtSearchText"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:digits="ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx0123456789.-_@ "
+                        android:drawablePadding="-5dp"
+                        android:hint="@string/search"
+                        android:imeOptions="actionSearch"
+                        android:inputType="textVisiblePassword"
+                        android:longClickable="false"
+                        android:padding="5dp"
+                        android:saveEnabled="true"
+                        android:singleLine="true"
+                        android:spaceFilter="@{true}"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textIsSelectable="false"
+                        android:textMenuFilter="@{true}"
+                        tools:ignore="HardcodedText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/imgSearchSettings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/filter_ico"
+                    android:src="@drawable/filter_ico"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/filter_ico" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerSearch"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchConstraintUp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/progressSearchDownload"
+            style="@style/progressBar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="32dp"
+            android:indeterminate="true"
+            android:indeterminateOnly="false"
+            android:indeterminateTint="#FFFFFF"
+            android:saveEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

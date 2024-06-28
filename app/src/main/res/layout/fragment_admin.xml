@@ -1,0 +1,2656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable name="user" type="com.basesoftware.fikirzadem.model.UserModel" />
+        <variable name="post" type="com.basesoftware.fikirzadem.model.PostModel" />
+        <variable name="comment" type="com.basesoftware.fikirzadem.model.LikeDislikeModel" />
+
+        <variable name="blockDate" type="com.google.firebase.Timestamp" />
+        <variable name="blockCalculateDate" type="Long" />
+
+    </data>
+
+    <ScrollView
+        android:id="@+id/scrollAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.admin.AdminFragment"
+        tools:ignore="ContentDescription" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="HardcodedText,SmallSp">
+
+            <LinearLayout
+                android:id="@+id/linearAdminLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/shape_box"
+                android:gravity="center"
+                android:longClickable="false"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/login"
+                    android:textColor="#FFFFFF" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtAdminLoginLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/password"
+                    android:textColorHint="@android:color/darker_gray"
+                    app:boxBackgroundMode="outline"
+                    app:boxCollapsedPaddingTop="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:endIconMode="password_toggle"
+                    app:expandedHintEnabled="true"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                    app:hintTextColor="#FFFFFF">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtAdminLogin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:saveEnabled="true"
+                        tools:ignore="HardcodedText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAdminLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/shape_user_sheet_button"
+                    android:text="@string/login"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerAdminReport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerAdminContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone" />
+
+
+            <LinearLayout
+                android:id="@+id/linearAdminEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/shape_box"
+                android:longClickable="false"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="15dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/profile"
+                    android:textAllCaps="true"
+                    android:textColor="#FFFFFF" />
+
+                <LinearLayout
+                    android:id="@+id/linearAdminUserId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:id="@+id/txtAdminUserId"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@{user.userId}"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_red_dark" />
+
+                    <ImageView
+                        android:id="@+id/imgAdminUserIdCopy"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="5dp"
+                        app:srcCompat="@drawable/undo" />
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <LinearLayout
+                        android:id="@+id/linearAdminNewPpShow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/imgAdminEditPpSmall"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="bottom"
+                            android:layout_weight="1"
+                            android:download="@{user.userProfilePicture}"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/imgAdminEditPpMedium"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="bottom"
+                            android:layout_weight="1"
+                            android:download="@{user.userProfilePicture}"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/imgAdminEditPpOriginal"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_weight="1"
+                            android:download="@{user.userProfilePicture}"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearAdminPp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearAdminNewPpShow">
+
+                        <CheckBox
+                            android:id="@+id/chkAdminEditPp"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="center" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtAdminEditPpLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:hint="Kullanıcı resmi"
+                            android:textColorHint="@android:color/darker_gray"
+                            app:boxBackgroundMode="outline"
+                            app:boxCollapsedPaddingTop="10dp"
+                            app:boxCornerRadiusBottomEnd="10dp"
+                            app:boxCornerRadiusBottomStart="10dp"
+                            app:boxCornerRadiusTopEnd="10dp"
+                            app:boxCornerRadiusTopStart="10dp"
+                            app:counterEnabled="false"
+                            app:endIconMode="clear_text"
+                            app:expandedHintEnabled="true"
+                            app:hintAnimationEnabled="true"
+                            app:hintEnabled="true"
+                            app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                            app:hintTextColor="#FFFFFF">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtAdminEditPp"
+                                android:layout_width="match_parent"
+                                android:layout_height="55dp"
+                                android:digits="ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx "
+                                android:imeOptions="actionDone"
+                                android:inputType="textVisiblePassword"
+                                android:longClickable="true"
+                                android:maxLines="1"
+                                android:saveEnabled="true"
+                                android:singleLine="true"
+                                android:spaceFilter="@{true}"
+                                android:text="@{user.userProfilePicture}"
+                                android:textIsSelectable="false"
+                                tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageView
+                            android:id="@+id/imgAdminDeletePp"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="5dp"
+                            app:srcCompat="@drawable/fail" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminNewRealName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditRealName"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditRealNameLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="@string/user_real_name"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:counterEnabled="false"
+                        app:counterMaxLength="20"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditRealName"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx "
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLength="20"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{user.userRealName}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imgAdminDeleteRealName"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="5dp"
+                        app:srcCompat="@drawable/fail" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminNewUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditUserName"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditUserNameLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="@string/username"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:counterEnabled="false"
+                        app:counterMaxLength="15"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditUserName"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="abcdefghijklmnoprstuvyzqwx0123456789"
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLength="15"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{user.userName}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imgAdminDeleteUserName"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="5dp"
+                        app:srcCompat="@drawable/fail" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminNewBiography"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditBiography"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditBiographyLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="@string/biography"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:counterEnabled="false"
+                        app:counterMaxLength="350"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditBiography"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx0123456789.,;!?$#%+-_/*()[]{} "
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLength="350"
+                            android:saveEnabled="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{user.userBiography}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imgAdminDeleteBiography"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="5dp"
+                        app:srcCompat="@drawable/fail" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminNewMail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditMail"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditMailLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="@string/email"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditMail"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="abcdefghijklmnopqrstuvwxyz0123456789@-_."
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLength="50"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{user.userMail}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminNewInstagram"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditInstagram"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditInstagramLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="Instagram"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF"
+                        tools:ignore="HardcodedText">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditInstagram"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="abcdefghijklmnopqrstuvwxyz0123456789@-_."
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLength="50"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{user.userInstagram}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imgAdminDeleteInstagram"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="5dp"
+                        app:srcCompat="@drawable/fail" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminNewTwitter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditTwitter"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditTwitterLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="Twitter"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF"
+                        tools:ignore="HardcodedText">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditTwitter"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="abcdefghijklmnopqrstuvwxyz0123456789@-_."
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLength="50"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{user.userTwitter}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imgAdminDeleteTwitter"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="5dp"
+                        app:srcCompat="@drawable/fail" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminNewFacebook"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditFacebook"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditFacebookLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="Facebook"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF"
+                        tools:ignore="HardcodedText">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditFacebook"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="abcdefghijklmnopqrstuvwxyz0123456789@-_."
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLength="50"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{user.userFacebook}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imgAdminDeleteFacebook"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="5dp"
+                        app:srcCompat="@drawable/fail" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminMessageTr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditMessageTr"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditMessageTrLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="Admin Mesaj (TR)"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:counterEnabled="false"
+                        app:counterMaxLength="350"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditMessageTr"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx0123456789.,;!?$#%+-_/*()[]{} "
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLength="350"
+                            android:saveEnabled="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{user.userAdminMessageTr}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminMessageEn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditMessageEn"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditMessageEnLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="Admin Mesaj (EN)"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:counterEnabled="false"
+                        app:counterMaxLength="350"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditMessageEn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx0123456789.,;!?$#%+-_/*()[]{} "
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLength="350"
+                            android:saveEnabled="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{user.userAdminMessageEn}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminNewFollowing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditFollowing"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditFollowingLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="@string/userFollowing"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditFollowing"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="abcdefghijklmnopqrstuvwxyz0123456789@-_."
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLength="50"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{Integer.toString(user.userFollowing)}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminNewFollower"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditFollower"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditFollowerLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="@string/userFollower"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF"
+                        tools:ignore="TooManyViews">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditFollower"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="abcdefghijklmnopqrstuvwxyz0123456789@-_."
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLength="50"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{Integer.toString(user.userFollower)}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linearAdminNewReport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditReport"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditReportLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="@string/report"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditReport"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="abcdefghijklmnopqrstuvwxyz0123456789@-_."
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLength="50"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{Integer.toString(user.userReport)}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imgAdminAddReport"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="5dp"
+                        app:srcCompat="@drawable/ico_add" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminNewSpamPost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditSpamPost"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditSpamPostLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="Spam İçerik (Max 5)"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditSpamPost"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="abcdefghijklmnopqrstuvwxyz0123456789@-_."
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLength="50"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{Integer.toString(user.userSpamPost)}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imgAdminAddSpamPost"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="5dp"
+                        app:srcCompat="@drawable/ico_add" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminNewSpamComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditSpamComment"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditSpamCommentLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="Spam Yorum (Max 5)"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditSpamComment"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="abcdefghijklmnopqrstuvwxyz0123456789@-_."
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLength="50"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{Integer.toString(user.userSpamComment)}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imgAdminAddSpamComment"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="5dp"
+                        app:srcCompat="@drawable/ico_add" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminNewSpamReport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditSpamReport"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditSpamReportLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="Spam Rapor (Max 5)"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditSpamReport"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="abcdefghijklmnopqrstuvwxyz0123456789@-_."
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLength="50"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{Integer.toString(user.userSpamReport)}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imgAdminAddSpamReport"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="5dp"
+                        app:srcCompat="@drawable/ico_add" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminNewSpamContact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditSpamContact"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditSpamContactLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="Spam Mesaj (Max 5)"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditSpamContact"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="abcdefghijklmnopqrstuvwxyz0123456789@-_."
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLength="50"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{Integer.toString(user.userSpamContact)}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imgAdminAddSpamContact"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="5dp"
+                        app:srcCompat="@drawable/ico_add" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminExtra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/chkAdminEditAddPost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/txtAdminEditAddPost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="İçerik ekle"
+                            android:textColor="@{user.userAddPost == true ? @android:color/holo_green_light : @android:color/holo_red_light}" />
+
+                        <CheckBox
+                            android:id="@+id/chkAdminEditAddComment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/txtAdminEditAddComment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Yorum ekle"
+                            android:textColor="@{user.userAddComment == true ? @android:color/holo_green_light : @android:color/holo_red_light}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/chkAdminEditAddReport"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/txtAdminEditAddReport"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Rapor gönder"
+                            android:textColor="@{user.userAddReport == true ? @android:color/holo_green_light : @android:color/holo_red_light}" />
+
+                        <CheckBox
+                            android:id="@+id/chkAdminEditAddContact"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/txtAdminEditAddContact"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Admin iletişim"
+                            android:textColor="@{user.userAddContact == true ? @android:color/holo_green_light : @android:color/holo_red_light}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/chkAdminEditProfile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:ignore="TooManyViews" />
+
+                        <TextView
+                            android:id="@+id/txtAdminEditProfile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/edit_profile"
+                            android:textColor="@{user.userEditProfile == true ? @android:color/holo_green_light : @android:color/holo_red_light}" />
+
+                        <CheckBox
+                            android:id="@+id/chkAdminEditConfirm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/txtAdminEditConfirm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Onaylı hesap"
+                            android:textColor="@{user.userEmailConfirm == true ? @android:color/holo_green_light : @android:color/holo_red_light}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/chkAdminEditActive"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/txtAdminEditActive"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Aktif"
+                            android:textColor="@{user.userIsActive == true ? @android:color/holo_green_light : @android:color/holo_red_light}" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAdminBlockDeleteUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_user_sheet_button"
+                    android:text="Engelle &amp; Hesap Sil"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAdminDeleteUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_user_sheet_button"
+                    android:text="Hesap Sil"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAdminUpdateSend"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_user_sheet_button"
+                    android:text="Kaydet"
+                    android:textColor="@android:color/holo_green_light"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearAdminUserSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/shape_box"
+                android:longClickable="false"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="15dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Kullanıcı Ara"
+                    android:textAllCaps="true"
+                    android:textColor="#FFFFFF" />
+
+                <LinearLayout
+                    android:id="@+id/linearSearchId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminSearchIdLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="ID"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:counterEnabled="false"
+                        app:counterMaxLength="50"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF"
+                        tools:ignore="HardcodedText">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminSearchId"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="0123456789-.ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx "
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:maxLength="50"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearSearchRealName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminSearchRealNameLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="@string/user_real_name"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:counterEnabled="false"
+                        app:counterMaxLength="20"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminSearchRealName"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="0123456789-.ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx "
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:maxLength="20"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearSearchUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminSearchUserNameLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="@string/username"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:counterEnabled="false"
+                        app:counterMaxLength="15"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminSearchUserName"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="0123456789-.ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx "
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:maxLength="15"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearSearchMail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminSearchMailLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="@string/email"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:counterEnabled="false"
+                        app:counterMaxLength="50"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminSearchMail"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="0123456789-.ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx "
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:maxLength="50"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAdminSearchUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_user_sheet_button"
+                    android:text="Kullanıcı Ara"
+                    android:textColor="#FFFFFF"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearAdminEditPost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/shape_box"
+                android:longClickable="false"
+                android:orientation="vertical"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="15dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/txtAdminPostTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/post"
+                    android:textAllCaps="true"
+                    android:textColor="#FFFFFF" />
+
+                <LinearLayout
+                    android:id="@+id/linearAdminPostId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:id="@+id/txtAdminPostId"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@{post.postId}"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_red_dark" />
+
+                    <ImageView
+                        android:id="@+id/imgAdminPostIdCopy"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        app:srcCompat="@drawable/navleft_ico_contact_us" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminPostUserId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:id="@+id/txtAdminPostUserId"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@{post.postUserId}"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_green_light" />
+
+                    <ImageView
+                        android:id="@+id/imgAdminPostUserIdCopy"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        app:srcCompat="@drawable/navleft_ico_profile" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtAdminPostDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:datetime="@{post.postDate}"
+                    android:textAlignment="center"
+                    android:textIsSelectable="false" />
+
+                <LinearLayout
+                    android:id="@+id/linearAdminPostCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditCategory"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/txtAdminPostCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="0"
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:text="@string/category_shop"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        app:drawableStartCompat="@drawable/category_ico_shop"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="InefficientWeight" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminPostMode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditPostMode"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/txtAdminPostMode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="0"
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:text="@string/likemode_on"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        app:drawableStartCompat="@drawable/newpost_likemode_spinner_ico_open"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="InefficientWeight" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminPostContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/chkAdminEditPostContent"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminEditPostContentLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="@string/post"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:counterEnabled="false"
+                        app:counterMaxLength="500"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminEditPostContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx0123456789.,;!?$#%+-_/*()[]{} "
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:maxLength="500"
+                            android:saveEnabled="true"
+                            android:spaceFilter="@{true}"
+                            android:text="@{post.postContent}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAdminDeletePost"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_user_sheet_button"
+                    android:text="Sil"
+                    android:textColor="#FF0000"
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAdminUpdatePost"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_user_sheet_button"
+                    android:text="Güncelle"
+                    android:textColor="@android:color/holo_green_light"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearAdminEditPostComment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/shape_box"
+                android:longClickable="false"
+                android:orientation="vertical"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="15dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/txtAdminPostCommentTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="20dp"
+                    android:text="YORUM"
+                    android:textAllCaps="true"
+                    android:textColor="#FFFFFF" />
+
+                <LinearLayout
+                    android:id="@+id/linearAdminPostCommentId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:id="@+id/txtAdminPostCommentId"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@{comment.postId}"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_red_dark" />
+
+                    <ImageView
+                        android:id="@+id/imgAdminPostCommentIdCopy"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        app:srcCompat="@drawable/navleft_ico_contact_us" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearAdminPostCommentUserId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:id="@+id/txtAdminPostCommentUserId"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@{comment.actionUserId}"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_green_light" />
+
+                    <ImageView
+                        android:id="@+id/imgAdminPostCommentUserIdCopy"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        app:srcCompat="@drawable/navleft_ico_profile" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtAdminPostComment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="@{comment.postComment}"
+                    android:textAlignment="center"
+                    android:textIsSelectable="false" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAdminDeletePostComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_user_sheet_button"
+                    android:text="Yorumu Sil"
+                    android:textColor="#FF0000"
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAdminDeletePostLike"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_user_sheet_button"
+                    android:text="Beğeni Sil"
+                    android:textColor="#FF0000"
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearAdminSystemMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/shape_box"
+                android:longClickable="false"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="15dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/system_message"
+                    android:textAllCaps="true"
+                    android:textColor="#FFFFFF" />
+
+                <LinearLayout
+                    android:id="@+id/linearMessageTr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminSystemMessageTrLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="TR"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:counterEnabled="false"
+                        app:counterMaxLength="50"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF"
+                        tools:ignore="HardcodedText">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminSystemMessageTr"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx "
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:maxLength="50"
+                            android:saveEnabled="true"
+                            android:singleLine="false"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearMessageEn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtAdminSystemMessageEnLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:hint="EN"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:counterEnabled="false"
+                        app:counterMaxLength="20"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF"
+                        tools:ignore="HardcodedText">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtAdminSystemMessageEn"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx "
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:maxLength="20"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAdminSendSystemMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_user_sheet_button"
+                    android:text="Gönder"
+                    android:textColor="@android:color/holo_green_light"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearDeleteBlockMail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/shape_box"
+                android:longClickable="false"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="15dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="E mail Block Kaldır"
+                    android:textAllCaps="true"
+                    android:textColor="#FFFFFF" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtDeleteBlockMailLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:hint="@string/email"
+                    android:textColorHint="@android:color/darker_gray"
+                    app:boxBackgroundMode="outline"
+                    app:boxCollapsedPaddingTop="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:counterEnabled="false"
+                    app:counterMaxLength="50"
+                    app:endIconMode="clear_text"
+                    app:expandedHintEnabled="true"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                    app:hintTextColor="#FFFFFF">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtDeleteBlockMail"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:digits="0123456789-.ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx "
+                        android:imeOptions="actionDone"
+                        android:inputType="textVisiblePassword"
+                        android:maxLength="50"
+                        android:maxLines="1"
+                        android:saveEnabled="true"
+                        android:singleLine="true"
+                        android:spaceFilter="@{true}"
+                        android:textIsSelectable="false"
+                        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDeleteBlockMail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_user_sheet_button"
+                    android:text="Kaldır"
+                    android:textColor="@android:color/holo_green_light"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearDeleteBlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/shape_box"
+                android:longClickable="false"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="15dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Block Kaldır"
+                    android:textAllCaps="true"
+                    android:textColor="#FFFFFF" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnGetBlock"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/shape_user_sheet_button"
+                        android:gravity="center"
+                        android:text="@string/search"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <TextView
+                        android:id="@+id/txtDeleteBlock"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_green_dark" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearDeleteBlockDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="25dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtBlockDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:datetime="@{blockDate}"
+                        android:textAlignment="center"
+                        android:textIsSelectable="false"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtBlockDateCalculate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:calculateDate="@{blockCalculateDate}"
+                        android:textAlignment="center"
+                        android:textIsSelectable="false"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDeleteBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_user_sheet_button"
+                    android:text="Kaldır"
+                    android:textColor="@android:color/holo_green_light"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearDeleteProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_box"
+                android:longClickable="false"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="15dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Bakım - Silinen Profilleri Temizle"
+                    android:textAllCaps="true"
+                    android:textColor="#FFFFFF" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnGetDisableAccount"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/shape_user_sheet_button"
+                        android:gravity="center"
+                        android:text="@string/search"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtDeleteAccountLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="USER ID"
+                        android:textColorHint="@android:color/darker_gray"
+                        app:boxBackgroundMode="outline"
+                        app:boxCollapsedPaddingTop="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:counterEnabled="false"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body1"
+                        app:hintTextColor="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtDeleteAccount"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:digits="ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZQWXabcçdefgğhıijklmnoöprsştuüvyzqwx "
+                            android:imeOptions="actionDone"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="true"
+                            android:maxLines="1"
+                            android:saveEnabled="true"
+                            android:singleLine="true"
+                            android:spaceFilter="@{true}"
+                            android:textIsSelectable="false"
+                            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnCheckSocial"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/shape_user_sheet_button"
+                        android:gravity="center"
+                        android:text="@string/check"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8sp"
+                        android:visibility="gone"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearSocialAction1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtSocialAction1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_green_dark" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSocialAction1"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/shape_user_sheet_button"
+                        android:gravity="center"
+                        android:text="@string/delete"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearSocialAction2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtSocialAction2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_green_dark" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSocialAction2"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/shape_user_sheet_button"
+                        android:gravity="center"
+                        android:text="@string/delete"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearSocialAction3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtSocialAction3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_green_dark" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSocialAction3"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/shape_user_sheet_button"
+                        android:gravity="center"
+                        android:text="@string/delete"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearSocialAction4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtSocialAction4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_green_dark" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSocialAction4"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/shape_user_sheet_button"
+                        android:gravity="center"
+                        android:text="@string/delete"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearSocialAction5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtSocialAction5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_green_dark" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSocialAction5"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/shape_user_sheet_button"
+                        android:gravity="center"
+                        android:text="@string/delete"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDeleteProfilePicture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/shape_user_sheet_button"
+                    android:text="STORAGE SİL"
+                    android:textColor="@android:color/holo_green_light"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDeleteProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/shape_user_sheet_button"
+                    android:text="PROFİLİ SUNUCUDAN SİL"
+                    android:textColor="@android:color/holo_green_light"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable name="refreshPermission" type="Boolean" />
+        <variable name="commentDetail" type="com.basesoftware.fikirzadem.model.CommentDetailModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintPostComment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:soundEffectsEnabled="false">
+
+        <LinearLayout
+            android:id="@+id/linearPostComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_like_question"
+            android:orientation="vertical"
+            android:soundEffectsEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txtPostComment"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="30dp"
+                android:soundEffectsEnabled="false"
+                android:text="@{commentDetail.postComment}"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="#8899A6" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal"
+                android:soundEffectsEnabled="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgCommentDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:visibility="@{commentDetail.deletePermission == true ? View.VISIBLE : View.GONE}"
+                    app:srcCompat="@drawable/bottom_sheet_ico_delete"
+                    tools:srcCompat="@drawable/bottom_sheet_ico_delete" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:visibility="@{commentDetail.deletePermission == true ? View.VISIBLE : View.GONE}"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgCommentRefresh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="@{refreshPermission == false ? View.GONE : View.VISIBLE}"
+                    app:srcCompat="@drawable/bottom_sheet_ico_refresh"
+                    tools:srcCompat="@drawable/bottom_sheet_ico_refresh" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:visibility="@{refreshPermission == false ? View.GONE : View.VISIBLE}" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgCommentReport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="@{commentDetail.reportPermission == true ? View.VISIBLE : View.GONE}"
+                    app:srcCompat="@drawable/bottom_sheet_ico_report"
+                    tools:srcCompat="@drawable/bottom_sheet_ico_report" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:visibility="@{commentDetail.reportPermission == true ? View.VISIBLE : View.GONE}"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgPostCommentUserPp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:downloadPpWithUserId="@{commentDetail.actionUserId}"
+            android:soundEffectsEnabled="false"
+            app:layout_constraintBottom_toTopOf="@+id/linearPostComment"
+            app:layout_constraintEnd_toEndOf="@+id/linearPostComment"
+            app:layout_constraintStart_toStartOf="@+id/linearPostComment"
+            app:layout_constraintTop_toTopOf="@+id/linearPostComment" />
+
+        <View
+            android:id="@+id/viewLikeDialogSnackbar"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
