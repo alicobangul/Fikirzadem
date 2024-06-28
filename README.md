@@ -4,6 +4,7 @@ The project is the latest version of the backup. The final output will be obtain
 
 The list of items to be used during the development phase is provided below
 
+## Detail
 Language : Kotlin
 Reactive : Kotlin Coroutines - Flow
 Architecture : MVVM [SavedStateHandle] - Clean Architecture
@@ -12,7 +13,7 @@ Firebase : Auth [Email Change/Verify, Password Change], Firestore [+ Pagination]
 Data : Room [+ Paging]
 Other : Glide, Image Cropper
 
-UI - User Interface #
+## UI - User Interface
 Material UI
 CoordinatorLayout
 MotionLayout
@@ -23,7 +24,7 @@ NavigationView
 Custom Dialog
 Custom-RatingBar
 
-UX - User Experience #
+## UX - User Experience #
 Animation [-> SplashScreen]
 TextToSpeech
 Spannable
