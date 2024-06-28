@@ -12,7 +12,7 @@ Firebase : Auth [Email Change/Verify, Password Change], Firestore [+ Pagination]
 Data : Room [+ Paging]
 Other : Glide, Image Cropper
 
-# UI - User Interface #
+UI - User Interface #
 Material UI
 CoordinatorLayout
 MotionLayout
@@ -23,7 +23,7 @@ NavigationView
 Custom Dialog
 Custom-RatingBar
 
-# UX - User Experience #
+UX - User Experience #
 Animation [-> SplashScreen]
 TextToSpeech
 Spannable
